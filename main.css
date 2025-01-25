@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('https://raw.githubusercontent.com/<Ayaka82>/<ssh>/<main>/fuko.jpeg')no-repeat center center fixed;
+    background-image: url('https://github.com/Ayaka82/ssh/blob/main/fuko.jpeg')no-repeat center center fixed;
     background-size: cover;
     display: flex;
     flex-direction: column;

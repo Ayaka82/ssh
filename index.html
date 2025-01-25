@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSH App</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Home Screen -->
+        <div class="screen" id="screen1">
+            <h1>SSH App</h1>
+            <p>This is an app for SSH.</p>
+            <p>(Nakano Yu, Tanigawa Shiori, and Wakayama Ayaka)</p>
+            <p>Start: 2024/8/28</p>
+
+            <!-- 1週間以内のタスクリストを表示するエリア -->
+            <h2>今週のタスク</h2>
+            <ul id="upcomingTaskList"></ul>
+
+            <!-- 過ぎたタスクを表示するエリア -->
+            <h2>過ぎたタスク</h2>
+            <ul id="pastTaskList"></ul>
+            
+            <!-- やる気が低いタスクを表示するエリア -->
+            <h2>やった方がいいタスク</h2>
+            <ul id="lowMotivationTaskList"></ul>
+        </div>
+
+        <!-- Task List Screen -->
+        <div class="screen" id="screen2">
+            <h2>タスクリスト</h2>
+            <p>タスクを追加・編集しましょう。</p>
+            <div class="task-container">
+                <!-- Task Popup -->
+                <div id="taskPopup" class="popup" style="display: none;">
+                    <div class="popup-content">
+                        <span id="closePopup" class="close">&times;</span>
+                        <h2>タスク追加</h2>
+                        <button id="addTemplateButton">テンプレートから追加</button>
+                        <div id="taskFormContainer">
+                            <!-- Individual task inputs will be appended here -->
+                        </div>
+                        <button id="saveTasksButton">タスクを保存</button>
+                    </div>
+                </div>
+
+                <!-- Edit Task Popup -->
+                <div id="editTaskPopup" class="popup" style="display: none;">
+                    <div class="popup-content">
+                        <span id="closeEditPopup" class="close">&times;</span>
+                        <h2>タスク変更</h2>
+                        <label for="editTaskTitle">タイトル</label>
+                        <input type="text" id="editTaskTitle" placeholder="タイトルを入力">
+                        <label for="editTaskDate">締切日付</label>
+                        <input type="date" id="editTaskDate">
+                        <label for="editTaskMemo">メモ</label>
+                        <textarea id="editTaskMemo" placeholder="メモを入力"></textarea>
+                        <label for="editTaskMotivation">やる気 (0〜100)</label>
+                        <input type="range" id="editTaskMotivation" min="0" max="100" value="50">
+                        <input type="hidden" id="editTaskId">
+                        <button id="editTaskSubmit">変更を保存</button>
+                    </div>
+                </div>
+
+                <ul class="task-list"></ul>
+                <button id="addTaskButton">タスク追加</button>
+            </div>
+        </div>
+
+        <!-- Calendar Screen -->
+        <div class="screen" id="screen3" style="display: none;">
+            <h2>カレンダー</h2>
+            <div id="calendar-nav">
+                <button id="prevMonth">前の月</button>
+                <span id="calendar-month-year"></span>
+                <button id="nextMonth">次の月</button>
+            </div>
+            <div id="calendar"></div>
+        </div>
+
+        <!-- Record Screen -->
+        <div class="screen" id="screen6" style="display: none;">
+            <h2>記録</h2>
+            <p>完了したタスク数に応じたスタンプを獲得しましょう！</p>
+            <div id="stampGrid"></div>
+            <canvas id="taskStatsGraph" width="400" height="200"></canvas>
+        </div>
+
+        <!-- Hint Screen -->
+        <div class="screen" id="screenHint" style="display: none;">
+            <h2>課題ヒント</h2>
+            <ul id="hintList"></ul>
+        </div>
+
+        <!-- Task Detail Popup -->
+        <div id="taskDetailPopup" class="popup" style="display: none;">
+            <div class="popup-content">
+                <span id="closeTaskDetailPopup" class="close">&times;</span>
+                <h2>タスク詳細</h2>
+                <p id="taskDetailTitle"></p>
+                <p id="taskDetailDate"></p>
+                <p id="taskDetailMemo"></p>
+                <p id="taskDetailMotivation"></p>
+            </div>
+        </div>
+
+        <!-- Hint Detail Popup -->
+        <div id="hintDetailPopup" class="popup" style="display: none;">
+            <div class="popup-content">
+                <span id="closeHintDetailPopup" class="close">&times;</span>
+                <h2>ヒント詳細</h2>
+                <p id="hintDetailTitle"></p>
+                <p id="hintDetailTime"></p>
+                <p id="hintDetailMonth"></p>
+                <ul id="hintDetailAdvice"></ul>
+            </div>
+        </div>
+
+        <!-- Task Template Popup -->
+        <div id="taskTemplatePopup" class="popup" style="display: none;">
+            <div class="popup-content">
+                <span id="closeTaskTemplatePopup" class="close">&times;</span>
+                <h2>タスクテンプレート</h2>
+                <ul id="taskTemplateList"></ul>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav class="bottom-nav">
+            <button class="nav-btn" data-screen="screen1">Home</button>
+            <button class="nav-btn" data-screen="screen2">Tasks</button>
+            <button class="nav-btn" data-screen="screen3">Calendar</button>
+            <button class="nav-btn" data-screen="screen6">Records</button>
+            <button class="nav-btn" data-screen="screenHint">Hints</button>
+        </nav>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

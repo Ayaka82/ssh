@@ -1,0 +1,180 @@
+/* ベーススタイル */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('/Users/Ayaka/Desktop/SAPP/fuko.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.app-container {
+    flex-grow: 1;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 60px;
+    background-color: rgba(162, 152, 152, 0.068); /* 背景色を白で80%透明に設定 */
+    border-radius: 12px;
+}
+
+/* 各画面 */
+.screen {
+    display: none;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.8); /* 背景色を白で80%透明に設定 */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ホーム画面 */
+#screen1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1 {
+    color: #149b57;
+    margin-bottom: 20px;
+}
+
+#upcomingTaskList, #pastTaskList, #lowMotivationTaskList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#upcomingTaskList li, #pastTaskList li, #lowMotivationTaskList li {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    transition: background-color 0.3s;
+}
+
+#upcomingTaskList li:hover, #pastTaskList li:hover, #lowMotivationTaskList li:hover {
+    background-color: #f1f1f1;
+}
+
+/* ナビゲーションバー */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #3a9278;
+    text-align: center;
+    padding: 10px 0;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.bottom-nav button {
+    margin: 0 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.bottom-nav button:hover {
+    color: #ffffff;
+    background-color: #587ba3;
+}
+
+/* カレンダースタイル */
+#calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#calendar-month-year {
+    font-size: 24px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.calendar-days-row, .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    width: 100%;
+}
+
+.calendar-day, .calendar-cell {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #060606;
+    text-align: center;
+}
+
+.empty {
+    background-color: #ffffff00;
+}
+
+/* スタンプグリッドスタイル */
+#stampGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+}
+
+.stamp-cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #060606;
+    border-radius: 5px;
+}
+
+/* ポップアップスタイル */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #060606;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
